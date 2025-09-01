@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f5ebde;
+}
+
+.gap {
+    padding-top: 24px;
+}
+
+.setup {
+    width: 88%;
+    margin: auto;
+}
+
+h3 {
+    margin-bottom: 16px;
+}
+
+li {
+    padding-bottom: 10px;
+    padding-left: 8px;
+}
+
+.Recipe {
+    background-color: aliceblue;
+    width: 800px;
+    min-width: 400px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 3%;
+}
+
+.sample {
+    width: 88%;
+    height: auto;
+    margin-left: 6%;
+    margin-top: 20px;
+    border-radius: 2%;
+}
+
+.name {
+    margin-top: 10px;
+}
+
+.decribe {
+    margin-top: 20px;
+}
+
+.Pre-time {
+    background-color: rgb(234, 221, 226);
+    margin-top: 24px;
+    border-radius: 2%;
+    padding-bottom: 20px;
+}
+
+.Pre-time h3 {
+    padding-left: 20px;
+}
+
+.Pre-time li {
+    padding-bottom: 10px;
+    padding-left: 28px;
+}
+
+.Instructions, .Ingredients {
+    border-bottom: #8b8989 solid 2px;
+}
+
+.recipe-steps {
+  list-style: decimal;        /* đánh số thứ tự */
+  line-height: 1.6;           /* giãn dòng để dễ đọc */
+  color: #333;
+}
+
+.recipe-steps li::marker {
+  color: #b33;                /* màu số thứ tự (đỏ nâu) */
+  font-weight: bold;          /* số đậm hơn */
+}
+
+
+.recipe-steps strong {
+  font-weight: 700;           /* tiêu đề in đậm */
+}
