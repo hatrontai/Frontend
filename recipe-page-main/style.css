@@ -1,3 +1,8 @@
+:root {
+    --title-color: #822b02cd;
+    --line-seperate: #8585856d;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,10 +11,22 @@
     border: none;
     outline: none;
     font-family: 'Poppins', sans-serif;
+    color: #333;
 }
 
 body {
     background-color: #f5ebde;
+}
+
+.font-title {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    /* font-weight: bold; */
+    font-size: 24px;
+    color: var(--title-color);
+}
+
+strong {
+  font-weight: 700;           /* tiêu đề in đậm */
 }
 
 .gap {
@@ -27,7 +44,7 @@ h3 {
 
 li {
     padding-bottom: 10px;
-    padding-left: 8px;
+    margin-left: 8px;
 }
 
 .Recipe {
@@ -47,7 +64,7 @@ li {
     border-radius: 2%;
 }
 
-.name {
+.title {
     margin-top: 10px;
 }
 
@@ -56,7 +73,7 @@ li {
 }
 
 .Pre-time {
-    background-color: rgb(234, 221, 226);
+    background-color: rgba(242, 235, 238, 0.8);
     margin-top: 24px;
     border-radius: 2%;
     padding-bottom: 20px;
@@ -64,6 +81,7 @@ li {
 
 .Pre-time h3 {
     padding-left: 20px;
+    color: #5b1730;
 }
 
 .Pre-time li {
@@ -72,21 +90,57 @@ li {
 }
 
 .Instructions, .Ingredients {
-    border-bottom: #8b8989 solid 2px;
+    border-bottom: var(--line-seperate) solid 2px;
 }
 
 .recipe-steps {
   list-style: decimal;        /* đánh số thứ tự */
   line-height: 1.6;           /* giãn dòng để dễ đọc */
   color: #333;
+  margin-left: 10px;
 }
 
 .recipe-steps li::marker {
-  color: #b33;                /* màu số thứ tự (đỏ nâu) */
+  color: var(--title-color);                /* màu số thứ tự (đỏ nâu) */
   font-weight: bold;          /* số đậm hơn */
 }
 
+.Nutrition .unit {
+    display: flex;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: 2px solid var(--line-seperate);
+}
 
-.recipe-steps strong {
-  font-weight: 700;           /* tiêu đề in đậm */
+.Nutrition .name {
+    width: 50%;
+    padding-left: 20px;
+}
+
+.Nutrition .quantity {
+    width: 50%;
+    color: var(--title-color);
+    font-weight: bold;
+}
+
+.Nutrition p {
+    padding-bottom: 20px;
+}
+
+.Nutrition .unit:last-child {
+    border: none;
+    padding-bottom: 40px;
+}
+
+
+@media (max-width: 800px) {
+    .Recipe {
+        width: 100vw;
+        min-width: 400px;
+        margin-top: 0px;
+    }
+    .sample {
+        width: 100%;
+        margin: 0;
+    }
 }
