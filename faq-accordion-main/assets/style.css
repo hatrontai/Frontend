@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+body {
+    height: 100vh;
+    background-image: url("./images/background-pattern-desktop.svg");
+    background-color: #cfb9d37c;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.faq {
+    width: 40vw;
+    margin: auto;
+    background-color: aliceblue;
+    margin-top: 100px;
+    padding: 40px;
+}
+
+.faq .title {
+    margin-bottom: 24px;
+}
+
+.icon-star {
+    width: 28px;
+}
+
+.faq .question {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: #9d9c9c43 solid 1px;
+}
+
+.faq h3:first-of-type {
+    border: none;
+}
+
+.faq .question:hover {
+    cursor: pointer;
+    color: rgba(123, 7, 118, 0.793);
+}
+
+.faq .icon-plus {
+    background-image: url("./images/icon-plus.svg");
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+}
+
+.faq .answer {
+    display: none;
+}
