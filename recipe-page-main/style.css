@@ -136,7 +136,7 @@ li {
 @media (max-width: 800px) {
     .Recipe {
         width: 100vw;
-        min-width: 400px;
+        min-width: 360px;
         margin-top: 0px;
     }
     .sample {

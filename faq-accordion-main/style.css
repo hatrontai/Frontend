@@ -11,7 +11,7 @@
 
 body {
     height: 100vh;
-    background-image: url("./images/background-pattern-desktop.svg");
+    background-image: url("./assets/images/background-pattern-desktop.svg");
     background-color: #cfb9d37c;
     background-repeat: no-repeat;
     background-size: contain;
@@ -33,7 +33,7 @@ body {
     width: 28px;
 }
 
-.faq .question {
+.faq .qa .question {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -43,17 +43,22 @@ body {
     border-top: #9d9c9c43 solid 1px;
 }
 
-.faq h3:first-of-type {
+.faq .question h3 {
+    width: 92%;
+}
+
+
+.faq div:first-of-type .question {
     border: none;
 }
 
-.faq .question:hover {
+.faq .question h3:hover {
     cursor: pointer;
     color: rgba(123, 7, 118, 0.793);
 }
 
-.faq .icon-plus {
-    background-image: url("./images/icon-plus.svg");
+.faq .icon {
+    background-image: url("./assets/images/icon-plus.svg");
     background-size: cover;
     width: 20px;
     height: 20px;
@@ -61,4 +66,11 @@ body {
 
 .faq .answer {
     display: none;
+    width: 100%;
+    color: #42031c6d;
+    font-size: 14px;
 }
+
+/* #show {
+    display: block;
+} */
