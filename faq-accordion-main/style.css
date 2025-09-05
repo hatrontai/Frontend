@@ -23,6 +23,7 @@ body {
     background-color: aliceblue;
     margin-top: 100px;
     padding: 40px;
+    border-radius: 20px;
 }
 
 .faq .title {

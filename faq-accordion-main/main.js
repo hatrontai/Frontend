@@ -7,8 +7,10 @@ document.querySelectorAll(".qa").forEach(item => {
     // Toggle ẩn/hiện
     if (answer.style.display === "block") {
       answer.style.display = "none";
+      icon.style.backgroundImage = 'url(./assets/images/icon-plus.svg)';
     } else {
       answer.style.display = "block";
+      icon.style.backgroundImage = 'url(./assets/images/icon-minus.svg)';
     }
   });
 });
