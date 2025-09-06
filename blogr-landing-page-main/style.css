@@ -1,0 +1,121 @@
+:root {
+    --color-navbar-text: rgba(221, 218, 218, 0.901);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+.Navbar {
+    display: flex;
+    background: 
+    linear-gradient(to right,rgba(176, 71, 18, 0.812), rgba(202, 16, 16, 0.9)), /* lớp màu */
+    url("./images/bg-pattern-intro-desktop.svg");     
+    background-repeat: no-repeat;
+    background-size: 200%;
+    background-position: 20% 52%;
+    /* position: fixed; */
+    width: 100vw;
+    justify-content: space-around;
+    height: 60px;
+    align-items: center;
+}
+
+.Logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.Navbar-items {
+    display: flex;
+}
+
+.Navbar-items .item p {
+    color: var(--color-navbar-text);
+    font-weight: bold;
+}
+
+
+.Navbar-items .item {
+    display: flex;
+    width: 100px;
+    height: 60px;
+    margin-right: 8px;
+    margin-left: 8px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.Navbar-items .item p::after{
+    content: "";
+    display: inline-block;
+    width: 8px;       /* kích thước icon */
+    height: 8px;
+    margin-left: 8px;  /* khoảng cách giữa chữ và icon */
+
+    background-image: url("./images/icon-arrow-light.svg");
+    background-size: contain;   /* hoặc cover */
+    background-repeat: no-repeat;
+}
+
+.Navbar-items .item:first-child p::after {
+    background-image: none;
+}
+
+.Navbar-items .item-components {
+    display: none;
+}
+
+.Account {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+}
+
+.Account .login p {
+    color: var(--color-navbar-text);
+    font-weight: bold;
+}
+
+.Account .login {
+    cursor: pointer;
+}
+
+.Account .sign-up p {
+    color: #c41a1ade;
+    font-weight: bold;
+}
+
+.Account .sign-up {
+    display: flex;
+    background-color: aliceblue;
+    /* border-bottom-left-radius: 50%;
+    border-top-right-radius: 50%; */
+    border-radius: 999px;
+    width: 120px;
+    height: 40px;
+    margin-left: 20px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* .Header {
+    height: 400px;
+    background: 
+    linear-gradient(to right,rgba(176, 71, 18, 0.812), rgba(202, 16, 16, 0.9)),
+    url("./images/bg-pattern-intro-desktop.svg");     
+    background-repeat: no-repeat;
+    background-size: 200%;
+    background-position: 20% 52%;
+} */
