@@ -21,12 +21,13 @@
     url("./images/bg-pattern-intro-desktop.svg");     
     background-repeat: no-repeat;
     background-size: 200%;
-    background-position: 20% 52%;
-    /* position: fixed; */
+    background-position: 20% 39.4%;;
+    position: fixed;
     width: 100vw;
     justify-content: space-around;
-    height: 60px;
+    height: 100px;
     align-items: center;
+    top: 0;
 }
 
 .Logo {
@@ -110,7 +111,7 @@
     cursor: pointer;
 }
 
-/* .Header {
+.Header {
     height: 400px;
     background: 
     linear-gradient(to right,rgba(176, 71, 18, 0.812), rgba(202, 16, 16, 0.9)),
@@ -118,4 +119,62 @@
     background-repeat: no-repeat;
     background-size: 200%;
     background-position: 20% 52%;
-} */
+    margin-top: 100px;
+    width: 100vw;
+    text-align: center;
+    justify-content: center;
+    border-bottom-left-radius: 8%;
+}
+
+.Header .Title {
+    padding-top: 100px;
+    margin-bottom: 40px;
+}
+
+.Header .Title h1 {
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--color-navbar-text);
+}
+
+.Header .Title p {
+    color: var(--color-navbar-text);
+    margin-top: 16px;
+}
+
+.Header .Premium {
+    display: flex;
+    margin: auto;
+    width: 400px;
+    justify-content: space-around;
+}
+
+.Header .Premium .free {
+    border-radius: 999px;
+    background-color:   aliceblue;
+    width: 160px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Header .Premium .free a {
+    color: #c41a1ade;
+    font-weight: bold;
+}
+
+.Header .Premium .buy {
+    border-radius: 999px;
+    border: solid 2px var(--color-navbar-text);
+    width: 160px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Header .Premium .buy a {
+    color: var(--color-navbar-text);
+    font-weight: bold;
+}
