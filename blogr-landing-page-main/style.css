@@ -1,5 +1,5 @@
 :root {
-    --color-navbar-text: rgba(221, 218, 218, 0.901);
+    --color-white-text: rgba(221, 218, 218, 0.901);
 }
 
 
@@ -14,15 +14,15 @@
     color: #333;
 }
 
-.Navbar {
+.navbar {
     display: flex;
-    background: 
-    linear-gradient(to right,rgba(176, 71, 18, 0.812), rgba(202, 16, 16, 0.9)), /* lớp màu */
+    /* background: 
+    linear-gradient(to right,rgba(176, 71, 18, 0.812), rgba(202, 16, 16, 0.9)),
     url("./images/bg-pattern-intro-desktop.svg");     
     background-repeat: no-repeat;
     background-size: 200%;
-    background-position: 20% 39.4%;;
-    position: fixed;
+    background-position: 20% 39.4%; */
+    position: absolute;
     width: 100vw;
     justify-content: space-around;
     height: 100px;
@@ -30,33 +30,35 @@
     top: 0;
 }
 
-.Logo {
-    font-size: 28px;
+.logo p {
+    font-size: 36px;
     font-weight: bold;
+    color: var(--color-white-text);
 }
 
-.Navbar-items {
+.navbar-items {
     display: flex;
 }
 
-.Navbar-items .item p {
-    color: var(--color-navbar-text);
+.navbar-items .item p {
+    color: var(--color-white-text);
     font-weight: bold;
 }
 
 
-.Navbar-items .item {
+.navbar-items .item, .logo {
     display: flex;
-    width: 100px;
+    width: 120px;
     height: 60px;
     margin-right: 8px;
     margin-left: 8px;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    position: relative;
 }
 
-.Navbar-items .item p::after{
+.navbar-items .item p::after{
     content: "";
     display: inline-block;
     width: 8px;       /* kích thước icon */
@@ -68,36 +70,64 @@
     background-repeat: no-repeat;
 }
 
-.Navbar-items .item:first-child p::after {
-    background-image: none;
+.navbar-items .item-components {
+    display: block;
+    position: absolute;
+    top: 48px;
+    list-style: none;
+    background-color: aliceblue;
+    text-align: start;
+    width: 140px;
+    padding-top: 12px;
+    padding-bottom: 16px;
+    border-radius: 8px;
+    box-shadow: 10px 10px 20px rgba(64, 63, 63, 0.575);
 }
 
-.Navbar-items .item-components {
-    display: none;
+.navbar-items .item:hover p::after {
+    transform: rotate(180deg);
 }
 
-.Account {
+.navbar-items .item:hover {
+    text-decoration: underline;
+    color: var(--color-white-text);
+}
+
+.navbar-items .item-components li {
+    padding-top: 8px;
+    padding-left: 16px;
+}
+
+.navbar-items .item-components li:hover {
+    font-weight: bold;
+} 
+
+.account {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 200px;
 }
 
-.Account .login p {
-    color: var(--color-navbar-text);
+.account .login p {
+    color: var(--color-white-text);
     font-weight: bold;
 }
 
-.Account .login {
+.account .login {
     cursor: pointer;
 }
 
-.Account .sign-up p {
+.account .login:hover {
+    cursor: pointer;
+}
+
+.account .sign-up p {
     color: #c41a1ade;
     font-weight: bold;
 }
 
-.Account .sign-up {
+.account .sign-up {
     display: flex;
     background-color: aliceblue;
     /* border-bottom-left-radius: 50%;
@@ -111,70 +141,82 @@
     cursor: pointer;
 }
 
-.Header {
-    height: 400px;
+.account .sign-up:hover {
+    cursor: pointer;
+}
+
+.header {
+    height: 560px;
     background: 
     linear-gradient(to right,rgba(176, 71, 18, 0.812), rgba(202, 16, 16, 0.9)),
     url("./images/bg-pattern-intro-desktop.svg");     
     background-repeat: no-repeat;
     background-size: 200%;
     background-position: 20% 52%;
-    margin-top: 100px;
     width: 100vw;
     text-align: center;
     justify-content: center;
     border-bottom-left-radius: 8%;
+    position: relative;
 }
 
-.Header .Title {
-    padding-top: 100px;
+.header .title {
+    padding-top: 200px;
     margin-bottom: 40px;
 }
 
-.Header .Title h1 {
-    font-size: 40px;
+.header .title h1 {
+    font-size: 48px;
     font-weight: bold;
-    color: var(--color-navbar-text);
+    color: var(--color-white-text);
 }
 
-.Header .Title p {
-    color: var(--color-navbar-text);
+.header .title p {
+    color: var(--color-white-text);
     margin-top: 16px;
 }
 
-.Header .Premium {
+.header .premium {
     display: flex;
     margin: auto;
-    width: 400px;
+    width: 320px;
     justify-content: space-around;
 }
 
-.Header .Premium .free {
+.header .premium .free {
     border-radius: 999px;
     background-color:   aliceblue;
-    width: 160px;
+    width: 140px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.Header .Premium .free a {
+.header .premium .free:hover {
+    cursor: pointer;
+}
+
+.header .premium .free a {
     color: #c41a1ade;
     font-weight: bold;
 }
 
-.Header .Premium .buy {
+.header .premium .buy {
     border-radius: 999px;
-    border: solid 2px var(--color-navbar-text);
-    width: 160px;
+    border: solid 2px var(--color-white-text);
+    width: 140px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.Header .Premium .buy a {
-    color: var(--color-navbar-text);
+.header .premium .buy:hover {
+    cursor: pointer;
+}
+
+.header .premium .buy a {
+    color: var(--color-white-text);
     font-weight: bold;
 }
