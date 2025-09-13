@@ -10,7 +10,7 @@
     text-decoration: none;
     border: none;
     outline: none;
-    font-family: 'Poppins', sans-serif;
+    font-family: Arial, Helvetica, sans-serif ;
     color: #333;
 }
 
@@ -28,6 +28,10 @@
     height: 100px;
     align-items: center;
     top: 0;
+}
+
+.logo:hover {
+    cursor: default;
 }
 
 .logo p {
@@ -71,7 +75,7 @@
 }
 
 .navbar-items .item-components {
-    display: block;
+    display: none;
     position: absolute;
     top: 48px;
     list-style: none;
@@ -143,10 +147,11 @@
 
 .account .sign-up:hover {
     cursor: pointer;
+    background-color: rgba(208, 209, 210, 0.681);
 }
 
 .header {
-    height: 560px;
+    height: 520px;
     background: 
     linear-gradient(to right,rgba(176, 71, 18, 0.812), rgba(202, 16, 16, 0.9)),
     url("./images/bg-pattern-intro-desktop.svg");     
@@ -162,7 +167,7 @@
 
 .header .title {
     padding-top: 200px;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
 }
 
 .header .title h1 {
@@ -195,6 +200,7 @@
 
 .header .premium .free:hover {
     cursor: pointer;
+    background-color: rgba(208, 209, 210, 0.681);
 }
 
 .header .premium .free a {
@@ -220,3 +226,126 @@
     color: var(--color-white-text);
     font-weight: bold;
 }
+
+.designed {
+    display: flex;
+    padding-top: 40px;
+    justify-content: space-between;
+    height: 680px;
+}
+
+.designed .content-wrapper {
+    width: 50vw;
+    padding-left: 12vw;
+    text-align: start;
+    height:auto;
+}
+
+.designed .title {
+    padding-top: 80px;
+    width: 76vw;
+    /* display: flex; */
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.designed .graphic {
+    width: 40vw;
+    background-image: url('./images/illustration-editor-desktop.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container .content {
+    padding-top: 60px;
+}
+
+.container .content .section {
+    padding-bottom: 20px;
+    font-size: 24px;
+}
+
+.container .content .text {
+    font-size: 14px;
+    color: #434343c7;
+    line-height: 1.8;
+}
+
+.state {
+    width: 100vw;
+    height: 360px;
+    margin-top: 80px;
+    padding-left: 8vw;
+    padding-right: 12vw;
+    border-top-right-radius: 12%;
+    border-bottom-left-radius: 12%;
+    display: flex;
+    justify-content: space-between;
+    background-image: url('./images/bg-pattern-circles.svg');
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: -20% 80%;
+    background-color: rgba(38, 31, 64, 0.9);
+    align-items: center;
+}
+
+.state .graphic {
+    width: 36vw;
+    height: 560px;
+    background-image: url('./images/illustration-phones.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.state .content {
+    width: 40vw;
+    padding-top: 0px;
+}
+
+.state .content .section {
+    color: var(--color-white-text);
+    font-size: 32px;
+}
+
+.state .content .text {
+    font-size: 14px;
+    color: var(--color-white-text);
+}
+
+.tool {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+    width: 100vw;
+    margin-bottom: 80px;
+}
+
+.tool .graphic {
+    background-image: url('./images/illustration-laptop-desktop.svg');
+    width: 40vw;
+    height: 640px;
+    background-size: 120%;
+    background-repeat: no-repeat;
+    background-position: 84% 50%;
+}
+
+.tool .content {
+    width: 48vw;
+    padding-right: 12vw;
+}
+
+.tool .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center
+}
+
+.footer {
+    background-color: #333036;
+    height: 400px;
+    border-top-right-radius: 12%;
+}
+
