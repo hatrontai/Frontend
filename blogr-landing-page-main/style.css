@@ -14,6 +14,10 @@
     color: #333;
 }
 
+.display {
+    display: flex;
+}
+
 .navbar {
     display: flex;
     /* background: 
@@ -24,11 +28,33 @@
     background-position: 20% 39.4%; */
     position: absolute;
     width: 100vw;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding-left: 40px;
+    padding-right: 40px;
     height: 100px;
     align-items: center;
     top: 0;
 }
+
+.navbar .menu {
+    /* background-color: #333; */
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+    width: 40px;
+    height: 100px;
+    display: none;
+    background-image: url('./images/icon-hamburger.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.navbar .menu .item {
+    display: none;
+}
+
 
 .logo:hover {
     cursor: default;
@@ -97,12 +123,12 @@
     color: var(--color-white-text);
 }
 
-.navbar-items .item-components li {
+.item-components li {
     padding-top: 8px;
     padding-left: 16px;
 }
 
-.navbar-items .item-components li:hover {
+.item-components li:hover {
     font-weight: bold;
 } 
 
@@ -147,7 +173,7 @@
 
 .account .sign-up:hover {
     cursor: pointer;
-    background-color: rgba(208, 209, 210, 0.681);
+    background-color: rgba(226, 91, 61, 0.551);
 }
 
 .header {
@@ -199,8 +225,9 @@
 }
 
 .header .premium .free:hover {
-    cursor: pointer;
-    background-color: rgba(208, 209, 210, 0.681);
+   cursor: pointer;
+    background-color: rgba(226, 91, 61, 0.551);
+    color: var(--color-white-text);
 }
 
 .header .premium .free a {
@@ -220,6 +247,7 @@
 
 .header .premium .buy:hover {
     cursor: pointer;
+    background-color: rgba(240, 248, 255, 0.836);
 }
 
 .header .premium .buy a {
@@ -228,10 +256,18 @@
 }
 
 .designed {
-    display: flex;
+    display: block;
     padding-top: 40px;
     justify-content: space-between;
-    height: 680px;
+    align-items: center;
+    height: auto;
+    padding-bottom: 160px;
+}
+
+.designed .box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .designed .content-wrapper {
@@ -244,6 +280,7 @@
 .designed .title {
     padding-top: 80px;
     width: 76vw;
+    margin-left: 12vw;
     /* display: flex; */
     text-align: center;
     font-size: 32px;
@@ -251,7 +288,8 @@
 }
 
 .designed .graphic {
-    width: 40vw;
+    width: 44vw;
+    min-height: 40vw;
     background-image: url('./images/illustration-editor-desktop.svg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -275,7 +313,6 @@
 .state {
     width: 100vw;
     height: 360px;
-    margin-top: 80px;
     padding-left: 8vw;
     padding-right: 12vw;
     border-top-right-radius: 12%;
@@ -345,7 +382,67 @@
 
 .footer {
     background-color: #333036;
-    height: 400px;
+    height: 360px;
     border-top-right-radius: 12%;
+    display: flex;
+    width: 100vw;
+    justify-content: space-between;
+    /* align-items: center; */
+    padding-left: 8vw;
+    padding-right: 24vw;
+    padding-top: 80px;
 }
 
+.footer .logo p {
+    color: #ffffff;
+}
+
+.footer .item p {
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.footer .item-components {
+    list-style: none;
+}
+
+.footer li {
+    color: var(--color-white-text);
+    margin-top: 12px;
+    width: 120px;
+    padding-left: 0px;
+}
+
+.footer li:hover {
+    text-decoration: underline;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+
+@media (max-width: 800px) {
+    .navbar .menu {
+        display: block;
+    }
+    .navbar .item {
+        display: none;
+    }
+    .navbar .account {
+        display: none;
+    }
+
+    .designed .box {
+        flex-direction: column-reverse;
+    }
+    .designed .graphic {
+        width: 92vw;
+        height: 80vw;
+        background-position: center;
+        background-image: url('./images/illustration-editor-mobile.svg');
+    }
+    .designed .content-wrapper {
+        width: 88vw;
+        padding-left: 0;
+        text-align: center;
+    }
+}
