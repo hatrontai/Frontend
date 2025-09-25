@@ -4,13 +4,27 @@ function Validator(options) {
 
     function check(inputElement, rule) {
         var errorMessage = inputElement.parentElement.querySelector(options.formMessage) 
-        if (rule.test(inputElement.value)) {
+        if (rule.preCheck) {
+            // console.log('check pass')
+            var pw = formElement.querySelector(rule.preCheck).value
+            if (rule.test(inputElement.value, pw)) {
             errorMessage.innerText = ""
             inputElement.parentElement.classList.remove('invalid')
+            }
+            else {
+                errorMessage.innerText = rule.errorMessage
+                inputElement.parentElement.classList.add('invalid')
+            }
         }
         else {
-            errorMessage.innerText = rule.errorMessage
-            inputElement.parentElement.classList.add('invalid')
+            if (rule.test(inputElement.value)) {
+                errorMessage.innerText = ""
+                inputElement.parentElement.classList.remove('invalid')
+            }
+            else {
+                errorMessage.innerText = rule.errorMessage
+                inputElement.parentElement.classList.add('invalid')
+            }
         }
     }
 
@@ -18,7 +32,7 @@ function Validator(options) {
     if (formElement) {
         options.rules.forEach(function (rule) {
             var inputElement = formElement.querySelector(rule.selector);
-            console.log(inputElement)
+            // console.log(inputElement)
             if (inputElement) {
                 inputElement.onblur = function() {
                    check(inputElement, rule)
@@ -34,7 +48,7 @@ Validator.isRequired = function(selector) {
         selector: selector,
         errorMessage: "Vui long nhap ten cua ban!", 
         test: function(value) {
-            return value ? true : false
+            return value ? true : false;
         }
     }
 }
@@ -49,10 +63,23 @@ Validator.isEmail = function(selector) {
     }    
 }
 
-Validator.isPassword = function() {
-
+Validator.isPassword = function(selector, min) {
+    return {
+        selector: selector,
+        errorMessage: "Mat khau phai it nhat " + min + " ki tu",
+        test: function(pw) {
+            return pw.length >= min ? true : false;
+        }
+    }
 }
 
-Validator.checkPassword = function() {
-
+Validator.checkPassword = function(selector, preCheck) {
+    return {
+        selector: selector,
+        preCheck: preCheck,
+        errorMessage: "Xac nhan mat khau khong dung",
+        test: function(pw, pwCheck) {
+            return pw & pw === pwCheck ? true : false;
+        }
+    }
 }

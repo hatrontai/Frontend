@@ -52,8 +52,8 @@
             rules: [
                 Validator.isRequired('#fullname'),
                 Validator.isEmail('#email'),
-                // Validator.isPassword('#password'),
-                // Validator.checkPassword('#password-confirmation')
+                Validator.isPassword('#password', 6),
+                Validator.checkPassword('#password_confirmation', '#password')
             ]
         });
 
