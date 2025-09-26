@@ -50,10 +50,14 @@
             form: '#form-1',
             formMessage: '.form-message',
             rules: [
-                Validator.isRequired('#fullname'),
+                Validator.isRequired('#fullname', 'Vui lòng nhập tên của bạn.'),
+                Validator.isRequired('#email', 'Email là cần thiết'),
+                Validator.isRequired('#password', 'Password không được để trống!'),
                 Validator.isEmail('#email'),
                 Validator.isPassword('#password', 6),
-                Validator.checkPassword('#password_confirmation', '#password')
+                Validator.checkPassword('#password_confirmation', function() {
+                    return document.querySelector('#form-1 #password').value
+                })
             ]
         });
 

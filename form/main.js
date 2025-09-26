@@ -2,28 +2,20 @@
 // Object
 function Validator(options) {
 
+    var selectorRules = {};
+
     function check(inputElement, rule) {
         var errorMessage = inputElement.parentElement.querySelector(options.formMessage) 
-        if (rule.preCheck) {
-            // console.log('check pass')
-            var pw = formElement.querySelector(rule.preCheck).value
-            if (rule.test(inputElement.value, pw)) {
-            errorMessage.innerText = ""
-            inputElement.parentElement.classList.remove('invalid')
-            }
-            else {
-                errorMessage.innerText = rule.errorMessage
-                inputElement.parentElement.classList.add('invalid')
-            }
-        }
-        else {
-            if (rule.test(inputElement.value)) {
+        var rules = selectorRules[rule.selector]
+        for (i= 0; i < rules.length; i++) {
+            if (rules[i].test(inputElement.value)) {
                 errorMessage.innerText = ""
                 inputElement.parentElement.classList.remove('invalid')
             }
             else {
-                errorMessage.innerText = rule.errorMessage
+                errorMessage.innerText = rules[i].errorMessage
                 inputElement.parentElement.classList.add('invalid')
+                break
             }
         }
     }
@@ -32,54 +24,70 @@ function Validator(options) {
     if (formElement) {
         options.rules.forEach(function (rule) {
             var inputElement = formElement.querySelector(rule.selector);
+            var errorMessage = inputElement.parentElement.querySelector(options.formMessage) 
             // console.log(inputElement)
+
+            // save rule into the selectorRule
+            if (Array.isArray(selectorRules[rule.selector])) {
+                selectorRules[rule.selector].push(rule)
+            }
+            else {
+                selectorRules[rule.selector] = [rule]
+            }
+
             if (inputElement) {
                 inputElement.onblur = function() {
                    check(inputElement, rule)
                 }
+                inputElement.onclick = function() {
+                    errorMessage.innerText = ""
+                    inputElement.parentElement.classList.remove('invalid')
+                }
             }
-        });
+        })
     }
+
+    console.log(selectorRules)
 }
 
 // Rules define
-Validator.isRequired = function(selector) {
+Validator.isRequired = function(selector, message) {
     return {
         selector: selector,
-        errorMessage: "Vui long nhap ten cua ban!", 
+        errorMessage: message || "Trường này là bắt buộc!", 
         test: function(value) {
             return value ? true : false;
         }
     }
 }
 
-Validator.isEmail = function(selector) {
+Validator.isEmail = function(selector, message) {
     return {
         selector: selector,
-        errorMessage: "Vui long nhap dung dinh dang email!",
+        errorMessage: message || "Vui lòng nhập đúng định dạng email.",
         test: function(value) {
             return String(value).toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
         }
     }    
 }
 
-Validator.isPassword = function(selector, min) {
+Validator.isPassword = function(selector, min, message) {
     return {
         selector: selector,
-        errorMessage: "Mat khau phai it nhat " + min + " ki tu",
+        errorMessage: message || `Mật khấu phải ít nhất ${min} kí tự.`,
         test: function(pw) {
             return pw.length >= min ? true : false;
         }
     }
 }
 
-Validator.checkPassword = function(selector, preCheck) {
+Validator.checkPassword = function(selector, getConfirm, message) {
     return {
         selector: selector,
-        preCheck: preCheck,
-        errorMessage: "Xac nhan mat khau khong dung",
-        test: function(pw, pwCheck) {
-            return pw & pw === pwCheck ? true : false;
+        getConfirm: getConfirm,
+        errorMessage: message || "Xác nhận mật khẩu không đúng.",
+        test: function(pwCheck) {
+            return pwCheck === getConfirm() ? true : false;
         }
     }
 }
