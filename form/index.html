@@ -29,17 +29,19 @@
 
             <div class="form-group">
             <label for="gender" class="form-label">Gender</label>
-            <div>
-                <input class="gender" name="gender" type="radio" value="male" class="form-control">
-                Male
-            </div>
-            <div>
-                <input class="gender" name="gender" type="radio" value="female" class="form-control">
-                Female
-            </div>
-            <div>
-                <input class="gender" name="gender" type="radio" value="other" class="form-control">
-                Other
+            <div class="form-ratio">
+                <div>
+                    <input class="gender" name="gender" type="radio" value="male" class="form-control">
+                    Male
+                </div>
+                <div>
+                    <input class="gender" name="gender" type="radio" value="female" class="form-control">
+                    Female
+                </div>
+                <div>
+                    <input class="gender" name="gender" type="radio" value="other" class="form-control">
+                    Other
+                </div>
             </div>
             <span class="form-message"></span>
             </div>
@@ -71,6 +73,7 @@
                 Validator.isRequired('#fullname', 'Vui lòng nhập tên của bạn.'),
                 Validator.isRequired('#email', 'Email là cần thiết'),
                 Validator.isRequired('#password', 'Password không được để trống!'),
+                Validator.isRequired('input[name="gender"]'),
                 Validator.isEmail('#email'),
                 Validator.isPassword('#password', 6),
                 Validator.checkPassword('#password_confirmation', function() {

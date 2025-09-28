@@ -14,12 +14,22 @@ function Validator(options) {
     }
 
     // validate the input with rule
-    function validate(inputElement, rule) {
+    function validate(inputElement, selector) {
         var errorMessage = getParrent(inputElement, options.formGroupSelector).querySelector(options.formMessage)
         // var errorMessage = inputElement.parentElement.querySelector(options.formMessage) 
-        var rules = selectorRules[rule.selector]
+        var rules = selectorRules[selector]
+        var check = true;
         for (i= 0; i < rules.length; i++) {
-            if (rules[i].test(inputElement.value)) {
+            switch (inputElement.type) {
+                case 'radio':   
+                case 'checkbox':
+                    check = rules[i].test(formElement.querySelector(selector + ':checked'))
+                    // console.log(formElement.querySelector(selector + ':checked'))
+                    break
+                default:
+                    check = rules[i].test(inputElement.value)
+            }
+            if (check) {
                 errorMessage.innerText = ""
                 getParrent(inputElement, options.formGroupSelector).classList.remove('invalid')
             }
@@ -42,19 +52,31 @@ function Validator(options) {
             var isFormValid = true
             // check value input
             options.rules.forEach(function(rule) {
-                var inputElement = formElement.querySelector(rule.selector);
-                if (inputElement) {
-                    if (!validate(inputElement, rule)) {
-                        isFormValid = false
+                var inputElements = Array.from(formElement.querySelectorAll(rule.selector));
+                inputElements.forEach(function(inputElement) {
+                    if (inputElement) {
+                        if (!validate(inputElement, rule.selector)) {
+                            isFormValid = false
+                        }
                     }
-                }
+                })
             })
             if (isFormValid) {
                 if (typeof options.onSubmit === 'function') {
 
                     var enableInputs = formElement.querySelectorAll('[name]:not([disabled])')
                     var valueInputs = Array.from(enableInputs).reduce(function (value, input){
-                        value[input.name] = input.value
+                        switch (input.type) {
+                            case 'checkbox':
+                            case 'radio':
+                                if (input.matches(':checked')) {
+                                    value[input.name] = input.value
+                                }
+                                break
+                            default:
+                                value[input.name] = input.value
+                        }
+                        
                         return value
                     }, {})
                     options.onSubmit(valueInputs)
@@ -64,8 +86,21 @@ function Validator(options) {
 
         // event fill input
         options.rules.forEach(function (rule) {
-            var inputElement = formElement.querySelector(rule.selector);
-            var errorMessage = getParrent(inputElement, options.formGroupSelector).querySelector(options.formMessage) 
+            var inputElements = Array.from(formElement.querySelectorAll(rule.selector));
+            var errorMessage = getParrent(inputElements[0], options.formGroupSelector).querySelector(options.formMessage) 
+            inputElements.forEach(function(inputElement) {
+                // event blur out of input
+                if (inputElement) {
+                    inputElement.onblur = function() {
+                    validate(inputElement, rule.selector)
+                    }
+                    inputElement.onclick = function() {
+                        errorMessage.innerText = ""
+                        getParrent(inputElement, options.formGroupSelector).classList.remove('invalid')
+                    }
+                }
+            })
+
             // console.log(inputElement)
 
             // save rule into the selectorRules
@@ -75,21 +110,10 @@ function Validator(options) {
             else {
                 selectorRules[rule.selector] = [rule]
             }
-
-            // event blur out of input
-            if (inputElement) {
-                inputElement.onblur = function() {
-                   validate(inputElement, rule)
-                }
-                inputElement.onclick = function() {
-                    errorMessage.innerText = ""
-                    getParrent(inputElement, options.formGroupSelector).classList.remove('invalid')
-                }
-            }
         })
     }
 
-    console.log(selectorRules)
+    // console.log(selectorRules)
 }
 
 // Rules define
