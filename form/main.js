@@ -68,10 +68,22 @@ function Validator(options) {
                     var valueInputs = Array.from(enableInputs).reduce(function (value, input){
                         switch (input.type) {
                             case 'checkbox':
+                                if (input.matches(':checked')) {
+                                    if (Array.isArray(value[input.name])) {
+                                        value[input.name].push(input.value)
+                                    }
+                                    else {
+                                        value[input.name] = [input.value]
+                                    }
+                                }
+                                break
                             case 'radio':
                                 if (input.matches(':checked')) {
                                     value[input.name] = input.value
                                 }
+                                break
+                            case 'file':
+                                value[input.name] = input.files
                                 break
                             default:
                                 value[input.name] = input.value
@@ -94,7 +106,7 @@ function Validator(options) {
                     inputElement.onblur = function() {
                     validate(inputElement, rule.selector)
                     }
-                    inputElement.onclick = function() {
+                    inputElement.oninput = function() {
                         errorMessage.innerText = ""
                         getParrent(inputElement, options.formGroupSelector).classList.remove('invalid')
                     }
